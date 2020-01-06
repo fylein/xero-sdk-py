@@ -14,7 +14,7 @@ class ApiBase:
     def set_server_url(self, server_url):
         self.__server_url = server_url
 
-    def _get_request(self, params, api_url):
+    def _get_request(self, api_url):
         api_headers = {'Authorization': f'Bearer {self.__access_token}'}
 
         response = requests.get(
