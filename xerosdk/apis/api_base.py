@@ -3,18 +3,41 @@ import json
 
 
 class ApiBase:
+    """
+    Base class for all API classes
+    """
 
     def __init__(self):
         self.__access_token = None
         self.__server_url = None
 
     def change_access_token(self, access_token):
+        """
+        Change old access token with a new one
+        Parameters:
+            access_token (str): New access token
+        """
+
         self.__access_token = access_token
 
     def set_server_url(self, server_url):
+        """
+        Set server URL while creating a connection
+
+        Parameters:
+            server_url (str): Server URL for Xero API
+        """
+
         self.__server_url = server_url
 
     def _get_request(self, api_url):
+        """
+        HTTP get request to a given Xero API URL
+
+        Parameters:
+            api_url (str): URL of Xero API
+        """
+
         api_headers = {'Authorization': f'Bearer {self.__access_token}'}
 
         response = requests.get(
@@ -27,6 +50,14 @@ class ApiBase:
             return result
 
     def _post_request(self, data, api_url):
+        """
+        HTTP post method to send data to Xero API URL
+
+        Parameters:
+            data (dict): Data to be sent to Xero API
+            api_url (str): URL of Xero API
+        """
+
         api_headers = {'Authorization': f'Bearer {self.__access_token}'}
 
         response = requests.post(
