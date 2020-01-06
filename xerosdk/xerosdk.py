@@ -16,6 +16,9 @@ class XeroSDK:
         self.__refresh_token = refresh_token
 
         self.Invoices = Invoices()
+        self.Accounts = Accounts()
+        self.Contacts = Contacts()
+        self.TrackingCategories = TrackingCategories()
 
         self.set_server_url()
         self.refresh_access_token()
@@ -24,11 +27,17 @@ class XeroSDK:
         base_url = self.__base_url
 
         self.Invoices.set_server_url(base_url)
+        self.Accounts.set_server_url(base_url)
+        self.Contacts.set_server_url(base_url)
+        self.TrackingCategories.set_server_url(base_url)
 
     def refresh_access_token(self):
         access_token = self.__get_access_token()
 
         self.Invoices.change_access_token(access_token)
+        self.Accounts.change_access_token(access_token)
+        self.Contacts.change_access_token(access_token)
+        self.TrackingCategories.change_access_token(access_token)
 
     def __get_access_token(self):
         authorization_header = f"{self.__client_id}:{self.__client_secret}"
