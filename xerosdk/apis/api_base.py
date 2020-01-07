@@ -81,7 +81,7 @@ class ApiBase:
         response = requests.post(
             self.__server_url + api_url,
             headers=api_headers,
-            data=data
+            json=data
         )
 
         if response.status_code == 200:
