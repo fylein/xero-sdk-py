@@ -18,6 +18,7 @@ class XeroSDK:
 
     TOKEN_URL = "https://identity.xero.com/connect/token"
     AUTHORIZE_URL = "https://login.xero.com/identity/connect/authorize"
+    CONNECTIONS_URL = "https://api.xero.com/connections"
 
     def __init__(self, base_url, client_id, client_secret, refresh_token):
         # Store the input parameters
@@ -50,6 +51,19 @@ class XeroSDK:
         self.Contacts.set_server_url(base_url)
         self.TrackingCategories.set_server_url(base_url)
 
+    def set_tenant_id(self, tenant_id):
+        """
+        Set tenant id for all API objects
+
+        Parameters:
+            tenant_id (str): Xero tenant ID
+        """
+
+        self.Invoices.set_tenant_id(tenant_id)
+        self.Accounts.set_tenant_id(tenant_id)
+        self.Contacts.set_tenant_id(tenant_id)
+        self.TrackingCategories.set_tenant_id(tenant_id)
+
     def refresh_access_token(self):
         """
         Refresh access token for each API objects
@@ -61,6 +75,9 @@ class XeroSDK:
         self.Accounts.change_access_token(access_token)
         self.Contacts.change_access_token(access_token)
         self.TrackingCategories.change_access_token(access_token)
+
+        # Get tenant ID
+        self.__get_tenant_id(access_token)
 
     def __get_access_token(self):
         """
@@ -86,3 +103,21 @@ class XeroSDK:
         if response.status_code == 200:
             token = json.loads(response.text)
             return token["access_token"]
+
+    def __get_tenant_id(self, access_token):
+        """
+        Get connected tenant ID from new access token
+
+        Parameters:
+            access_token (str): New access token
+        """
+
+        api_headers = {
+            "authorization": "Bearer " + access_token,
+        }
+        response = requests.get(XeroSDK.CONNECTIONS_URL, headers=api_headers)
+        connections = json.loads(response.text)
+        tenant_id = connections[0]["tenantId"]
+
+        # Set tenant ID
+        self.set_tenant_id(tenant_id)

@@ -9,6 +9,7 @@ class ApiBase:
 
     def __init__(self):
         self.__access_token = None
+        self.__tenant_id = None
         self.__server_url = None
 
     def change_access_token(self, access_token):
@@ -30,6 +31,15 @@ class ApiBase:
 
         self.__server_url = server_url
 
+    def set_tenant_id(self, tenant_id):
+        """
+        Set tenant id while creating connection
+        Parameters:
+            tenant_id (str): Xero tenant ID
+        """
+
+        self.__tenant_id = tenant_id
+
     def _get_request(self, api_url):
         """
         HTTP get request to a given Xero API URL
@@ -38,10 +48,14 @@ class ApiBase:
             api_url (str): URL of Xero API
         """
 
-        api_headers = {'Authorization': f'Bearer {self.__access_token}'}
+        api_headers = {
+            'authorization': 'Bearer ' + self.__access_token,
+            'xero-tenant-id': self.__tenant_id,
+            'accept': 'application/json'
+        }
 
         response = requests.get(
-            f'{self.__server_url}{api_url}',
+            self.__server_url+api_url,
             headers=api_headers
         )
 
@@ -58,10 +72,14 @@ class ApiBase:
             api_url (str): URL of Xero API
         """
 
-        api_headers = {'Authorization': f'Bearer {self.__access_token}'}
+        api_headers = {
+            'Authorization': 'Bearer ' + self.__access_token,
+            'xero-tenant-id': self.__tenant_id,
+            'accept': 'application/json'
+        }
 
         response = requests.post(
-            f'{self.__server_url}{api_url}',
+            self.__server_url + api_url,
             headers=api_headers,
             data=data
         )
