@@ -70,16 +70,19 @@ class XeroSDK:
             A new access token
         """
 
-        authorization_header = f"{self.__client_id}:{self.__client_secret}"
         api_headers = {
-            "authorization": f"Basic {str(base64.b64encode(authorization_header.encode()))}"
+            "authorization": "Basic " + str(
+                base64.b64encode(
+                    (self.__client_id + ":" + self.__client_secret).encode("utf-8")
+                ), "utf-8"
+            ),
         }
         api_data = {
-            "grant_type": "authorization_code",
+            "grant_type": "refresh_token",
             "refresh_token": self.__refresh_token
         }
         response = requests.post(XeroSDK.TOKEN_URL, headers=api_headers, data=api_data)
 
         if response.status_code == 200:
-            access_token = json.loads(response.text)
-            return access_token
+            token = json.loads(response.text)
+            return token["access_token"]
