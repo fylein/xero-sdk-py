@@ -1,6 +1,8 @@
 import requests
 import json
 
+from ..exceptions import *
+
 
 class ApiBase:
     """
@@ -63,6 +65,21 @@ class ApiBase:
             result = json.loads(response.text)
             return result
 
+        elif response.status_code == 403:
+            raise UnsuccessfulAuthentication(
+                'Invalid xero tenant ID or xero-tenant-id header missing'
+            )
+
+        elif response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+
+        else:
+            raise XeroSDKError(
+                response.text, response.status_code
+            )
+
     def _post_request(self, data, api_url):
         """
         HTTP post method to send data to Xero API URL
@@ -87,3 +104,16 @@ class ApiBase:
         if response.status_code == 200:
             result = json.loads(response.text)
             return result
+        elif response.status_code == 400:
+            error_msg = json.loads(response.text)["Message"]
+            raise XeroSDKError(
+                error_msg, response.status_code
+            )
+        elif response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+        else:
+            raise XeroSDKError(
+                response.text, response.status_code
+            )

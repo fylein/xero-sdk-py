@@ -3,6 +3,7 @@ import json
 import base64
 
 from .apis import *
+from .exceptions import *
 
 
 class XeroSDK:
@@ -104,6 +105,33 @@ class XeroSDK:
             token = json.loads(response.text)
             return token["access_token"]
 
+        error_msg = json.loads(response.text)["error"]
+        if response.status_code == 400:
+            if error_msg == "invalid_client":
+                raise InvalidClientError(
+                    'Invalid client ID or client secret or refresh token'
+                )
+            elif error_msg == "invalid_grant":
+                raise InvalidGrant(
+                    'Invalid refresh token'
+                )
+            elif error_msg == "unsupported_grant_type":
+                raise UnsupportedGrantType(
+                    'Invalid or non-existing grant type in request body'
+                )
+            else:
+                raise XeroSDKError(
+                    response.text, response.status_code
+                )
+        elif response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+        else:
+            raise XeroSDKError(
+                response.text, response.status_code
+            )
+
     def __get_tenant_id(self, access_token):
         """
         Get connected tenant ID from new access token
@@ -116,8 +144,23 @@ class XeroSDK:
             "authorization": "Bearer " + access_token,
         }
         response = requests.get(XeroSDK.CONNECTIONS_URL, headers=api_headers)
-        connections = json.loads(response.text)
-        tenant_id = connections[0]["tenantId"]
 
-        # Set tenant ID
-        self.set_tenant_id(tenant_id)
+        if response.status_code == 200:
+            connections = json.loads(response.text)
+            tenant_id = connections[0]["tenantId"]
+
+            # Set tenant ID
+            self.set_tenant_id(tenant_id)
+
+        elif response.status_code == 401:
+            raise InvalidTokenError(
+                'Invalid or non-existing access token'
+            )
+        elif response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+        else:
+            raise XeroSDKError(
+                response.text, response.status_code
+            )
