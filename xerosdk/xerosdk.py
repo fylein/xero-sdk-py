@@ -116,7 +116,7 @@ class XeroSDK:
                 raise InvalidClientError(
                     'Invalid client ID or client secret or refresh token'
                 )
-            
+
             if error_msg == "invalid_grant":
                 raise InvalidGrant(
                     'Invalid refresh token'
