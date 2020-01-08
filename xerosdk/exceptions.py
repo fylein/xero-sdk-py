@@ -1,3 +1,8 @@
+"""
+Xero SDK exceptions
+"""
+
+
 class XeroSDKError(Exception):
     """
     The base exception class for Xero SDK

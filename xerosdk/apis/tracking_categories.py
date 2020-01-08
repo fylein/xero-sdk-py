@@ -1,3 +1,7 @@
+"""
+Xero TrackingCategories API
+"""
+
 from .api_base import ApiBase
 
 
