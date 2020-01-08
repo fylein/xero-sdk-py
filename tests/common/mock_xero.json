@@ -1,0 +1,320 @@
+{
+  "invoices": [
+    {
+      "Type": "ACCREC",
+      "InvoiceID": "8b1de608-0713-4a32-b0ae-9b718f7cd621",
+      "InvoiceNumber": "INV-0001",
+      "Reference": "",
+      "Payments": [],
+      "CreditNotes": [],
+      "Prepayments": [],
+      "Overpayments": [],
+      "AmountDue": 1714.3,
+      "AmountPaid": 0.0,
+      "AmountCredited": 0.0,
+      "CurrencyRate": 1.0,
+      "IsDiscounted": "False",
+      "HasAttachments": "False",
+      "HasErrors": "False",
+      "Contact": {
+        "ContactID": "edb6fc06-32e4-4f55-8b7d-75d7205df3dd",
+        "Name": "Martin Hudson",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": "False"
+      },
+      "DateString": "2020-01-03T00:00:00",
+      "Date": "/Date(1578009600000+0000)/",
+      "DueDateString": "2020-01-10T00:00:00",
+      "DueDate": "/Date(1578614400000+0000)/",
+      "Status": "DRAFT",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 1714.3,
+      "TotalTax": 0.0,
+      "Total": 1714.3,
+      "UpdatedDateUTC": "/Date(1578035796860+0000)/",
+      "CurrencyCode": "INR"
+    },
+    {
+      "Type": "ACCREC",
+      "InvoiceID": "9a1de608-0713-4a32-b0ae-9b718f7cd621",
+      "InvoiceNumber": "INV-0002",
+      "Reference": "",
+      "Payments": [],
+      "CreditNotes": [],
+      "Prepayments": [],
+      "Overpayments": [],
+      "AmountDue": 200.0,
+      "AmountPaid": 0.0,
+      "AmountCredited": 0.0,
+      "CurrencyRate": 1.0,
+      "IsDiscounted": "False",
+      "HasAttachments": "False",
+      "HasErrors": "False",
+      "Contact": {
+        "ContactID": "edb6fc06-32e4-4f55-8b7d-75d7205df3dd",
+        "Name": "Martin Hudson",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": "False"
+      },
+      "DateString": "2020-01-03T00:00:00",
+      "Date": "/Date(1578009600000+0000)/",
+      "DueDateString": "2020-01-10T00:00:00",
+      "DueDate": "/Date(1578614400000+0000)/",
+      "Status": "DRAFT",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 200.0,
+      "TotalTax": 0.0,
+      "Total": 200.0,
+      "UpdatedDateUTC": "/Date(1578035796860+0000)/",
+      "CurrencyCode": "INR"
+    },
+    {
+      "Type": "ACCREC",
+      "InvoiceID": "5n1de608-0713-4a32-b0ae-9b718f7cd621",
+      "InvoiceNumber": "INV-0003",
+      "Reference": "",
+      "Payments": [],
+      "CreditNotes": [],
+      "Prepayments": [],
+      "Overpayments": [],
+      "AmountDue": 200.0,
+      "AmountPaid": 0.0,
+      "AmountCredited": 0.0,
+      "CurrencyRate": 1.0,
+      "IsDiscounted": "False",
+      "HasAttachments": "False",
+      "HasErrors": "False",
+      "Contact": {
+        "ContactID": "edb6fc06-32e4-4f55-8b7d-75d7205df3dd",
+        "Name": "Martin Hudson",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": "False"
+      },
+      "DateString": "2020-01-03T00:00:00",
+      "Date": "/Date(1578009600000+0000)/",
+      "DueDateString": "2020-01-10T00:00:00",
+      "DueDate": "/Date(1578614400000+0000)/",
+      "Status": "DRAFT",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 2000.0,
+      "TotalTax": 0.0,
+      "Total": 2000.0,
+      "UpdatedDateUTC": "/Date(1578035796860+0000)/",
+      "CurrencyCode": "INR"
+    }
+  ],
+  "accounts": [
+    {
+    "AccountID": "ebd06280-af70-4bed-97c6-7451a454ad85",
+    "Code": "091",
+    "Name": "Business Savings Account",
+    "Status": "ACTIVE",
+    "Type": "BANK",
+    "TaxType": "NONE",
+    "Description": "Business savings account",
+    "Class": "REVENUE",
+    "SystemAccount": "",
+    "EnablePaymentsToAccount": false,
+    "ShowInExpenseClaims": "False",
+    "BankAccountType": "NONE",
+    "ReportingCode": "REV.TRA.GOO",
+    "ReportingCodeName": "Sale of goods",
+    "HasAttachments": "False",
+    "UpdatedDateUTC": "/Date(1576107890870+0000)/",
+    "AddToWatchlist": "False"
+    },
+    {
+    "AccountID": "abc06280-af70-4bed-97c6-7451a454ad85",
+    "Code": "092",
+    "Name": "Sales",
+    "Status": "ACTIVE",
+    "Type": "BANK",
+    "TaxType": "NONE",
+    "Description": "Sales",
+    "Class": "REVENUE",
+    "SystemAccount": "",
+    "EnablePaymentsToAccount": false,
+    "ShowInExpenseClaims": "False",
+    "BankAccountType": "NONE",
+    "ReportingCode": "REV.TRA.GOO",
+    "ReportingCodeName": "Sale of goods",
+    "HasAttachments": "False",
+    "UpdatedDateUTC": "/Date(1576107890870+0000)/",
+    "AddToWatchlist": "False"
+    },
+    {
+    "AccountID": "fgh06280-af70-4bed-97c6-7451a454ad85",
+    "Code": "093",
+    "Name": "Other Revenue",
+    "Status": "ACTIVE",
+    "Type": "BANK",
+    "TaxType": "NONE",
+    "Description": "Other revenue",
+    "Class": "REVENUE",
+    "SystemAccount": "",
+    "EnablePaymentsToAccount": false,
+    "ShowInExpenseClaims": "False",
+    "BankAccountType": "NONE",
+    "ReportingCode": "REV.TRA.GOO",
+    "ReportingCodeName": "Sale of goods",
+    "HasAttachments": "False",
+    "UpdatedDateUTC": "/Date(1576107890870+0000)/",
+    "AddToWatchlist": "False"
+    }
+  ],
+  "contacts": [
+    {
+      "ContactID": "edb6fc06-32e4-4f55-8b7d-75d7205df3dd",
+      "ContactStatus": "ACTIVE",
+      "Name": "Martin Hudson",
+      "EmailAddress": "",
+      "BankAccountDetails": "",
+      "Addresses": [
+        {
+          "AddressType": "STREET",
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        },
+        {
+          "AddressType": "POBOX",
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        }
+      ],
+      "Phones": [
+        {
+          "PhoneType": "DDI",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "DEFAULT",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "FAX",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "MOBILE",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        }
+      ],
+      "UpdatedDateUTC": "/Date(1578035796803+0000)/",
+      "ContactGroups": [],
+      "IsSupplier": "False",
+      "IsCustomer": "True",
+      "ContactPersons": [],
+      "HasAttachments": "False",
+      "HasValidationErrors": "False"
+    },
+    {
+      "ContactID": "acb6fc06-32e4-4f55-8b7d-75d7205df3dd",
+      "ContactStatus": "ACTIVE",
+      "Name": "Martin Hudson",
+      "EmailAddress": "",
+      "BankAccountDetails": "",
+      "Addresses": [
+        {
+          "AddressType": "STREET",
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        },
+        {
+          "AddressType": "POBOX",
+          "City": "",
+          "Region": "",
+          "PostalCode": "",
+          "Country": ""
+        }
+      ],
+      "Phones": [
+        {
+          "PhoneType": "DDI",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "DEFAULT",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "FAX",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        },
+        {
+          "PhoneType": "MOBILE",
+          "PhoneNumber": "",
+          "PhoneAreaCode": "",
+          "PhoneCountryCode": ""
+        }
+      ],
+      "UpdatedDateUTC": "/Date(1578035796803+0000)/",
+      "ContactGroups": [],
+      "IsSupplier": "False",
+      "IsCustomer": "True",
+      "ContactPersons": [],
+      "HasAttachments": "False",
+      "HasValidationErrors": "False"
+    }
+  ],
+  "tracking_categories": [
+    {
+      "Name": "Region",
+      "Status": "ACTIVE",
+      "TrackingCategoryID": "351953c4-8127-4009-88c3-f9cd8c9cbe9f",
+      "Options": [
+        {
+          "TrackingOptionID": "ce205173-7387-4651-9726-2cf4c5405ba2",
+          "Name": "East Coast",
+          "Status": "ACTIVE"
+        },
+        {
+          "TrackingOptionID": "6eb12fdf-63de-4033-98df-be679d84e3c2",
+          "Name": "North",
+          "Status": "ACTIVE"
+        },
+        {
+          "TrackingOptionID": "6159bdd4-b634-4338-a664-e929aa73f70f",
+          "Name": "South",
+          "Status": "ACTIVE"
+        },
+        {
+          "TrackingOptionID": "161ad543-97ab-4436-8213-e0d794b1ea90",
+          "Name": "West Coast",
+          "Status": "ACTIVE"
+        }
+      ]
+    }
+  ]
+}
