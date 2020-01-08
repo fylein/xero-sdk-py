@@ -34,10 +34,10 @@ class XeroSDK:
         self.__refresh_token = refresh_token
 
         # Create an object for each API
-        self.Invoices = Invoices()
-        self.Accounts = Accounts()
-        self.Contacts = Contacts()
-        self.TrackingCategories = TrackingCategories()
+        self.invoices = Invoices()
+        self.accounts = Accounts()
+        self.contacts = Contacts()
+        self.tracking_categories = TrackingCategories()
 
         # Set the server url
         self.set_server_url()
@@ -52,10 +52,10 @@ class XeroSDK:
 
         base_url = self.__base_url
 
-        self.Invoices.set_server_url(base_url)
-        self.Accounts.set_server_url(base_url)
-        self.Contacts.set_server_url(base_url)
-        self.TrackingCategories.set_server_url(base_url)
+        self.invoices.set_server_url(base_url)
+        self.accounts.set_server_url(base_url)
+        self.contacts.set_server_url(base_url)
+        self.tracking_categories.set_server_url(base_url)
 
     def set_tenant_id(self, tenant_id):
         """
@@ -65,10 +65,10 @@ class XeroSDK:
             tenant_id (str): Xero tenant ID
         """
 
-        self.Invoices.set_tenant_id(tenant_id)
-        self.Accounts.set_tenant_id(tenant_id)
-        self.Contacts.set_tenant_id(tenant_id)
-        self.TrackingCategories.set_tenant_id(tenant_id)
+        self.invoices.set_tenant_id(tenant_id)
+        self.accounts.set_tenant_id(tenant_id)
+        self.contacts.set_tenant_id(tenant_id)
+        self.tracking_categories.set_tenant_id(tenant_id)
 
     def refresh_access_token(self):
         """
@@ -77,10 +77,10 @@ class XeroSDK:
 
         access_token = self.__get_access_token()
 
-        self.Invoices.change_access_token(access_token)
-        self.Accounts.change_access_token(access_token)
-        self.Contacts.change_access_token(access_token)
-        self.TrackingCategories.change_access_token(access_token)
+        self.invoices.change_access_token(access_token)
+        self.accounts.change_access_token(access_token)
+        self.contacts.change_access_token(access_token)
+        self.tracking_categories.change_access_token(access_token)
 
         # Get tenant ID
         self.__get_tenant_id(access_token)

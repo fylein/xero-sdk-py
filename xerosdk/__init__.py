@@ -19,5 +19,3 @@ __all__ = [
     'InvalidTokenError',
     'UnsuccessfulAuthentication'
 ]
-
-name = "xerosdk"
