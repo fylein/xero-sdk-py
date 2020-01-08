@@ -2,9 +2,10 @@
 Xero SDK connection base class
 """
 
-import requests
-import json
 import base64
+import json
+
+import requests
 
 from .apis import *
 from .exceptions import *
@@ -115,26 +116,29 @@ class XeroSDK:
                 raise InvalidClientError(
                     'Invalid client ID or client secret or refresh token'
                 )
-            elif error_msg == "invalid_grant":
+            
+            if error_msg == "invalid_grant":
                 raise InvalidGrant(
                     'Invalid refresh token'
                 )
-            elif error_msg == "unsupported_grant_type":
+
+            if error_msg == "unsupported_grant_type":
                 raise UnsupportedGrantType(
                     'Invalid or non-existing grant type in request body'
                 )
-            else:
-                raise XeroSDKError(
-                    response.text, response.status_code
-                )
-        elif response.status_code == 500:
-            raise InternalServerError(
-                'Internal server error'
-            )
-        else:
+
             raise XeroSDKError(
                 response.text, response.status_code
             )
+
+        if response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+
+        raise XeroSDKError(
+            response.text, response.status_code
+        )
 
     def __get_tenant_id(self, access_token):
         """
