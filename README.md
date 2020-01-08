@@ -3,9 +3,8 @@ Python SDK to access Xero APIs
 
 ## Requirements
 
-1. [python 3+](https://www.python.org/downloads/)
+1. [Python 3+](https://www.python.org/downloads/)
 2. [Requests](https://pypi.org/project/requests/) library
-3. [pytest](https://pypi.org/project/pytest/) library
 
 ## Installation
 
@@ -52,8 +51,14 @@ API classes are defined in this SDK.
 
 ## Integration Tests
 
-Before executing integration tests, create a 'test_credentials.json' file
-at project root directory and enter Xero OAuth2 authentication credentials.
+1. Install [pytest](https://pypi.org/project/pytest/) package using pip as follows:
+
+```
+pip install pytest
+```
+
+2. Create a 'test_credentials.json' file at project root directory and enter Xero OAuth2 authentication credentials of 
+your Xero app.
 
 ```json
 {
@@ -64,7 +69,7 @@ at project root directory and enter Xero OAuth2 authentication credentials.
 }
 ```
 
-Now run integration tests as follows:
+3. Run integration tests as follows:
 
 ```
 python -m pytest tests/integration
