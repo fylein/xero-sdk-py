@@ -1,3 +1,7 @@
+"""
+List all Xero APIs
+"""
+
 from .invoices import Invoices
 from .accounts import Accounts
 from .contacts import Contacts

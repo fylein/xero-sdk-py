@@ -1,3 +1,7 @@
+"""
+List all Xero SDK exceptions
+"""
+
 from .xerosdk import XeroSDK
 from .exceptions import InvalidClientError
 from .exceptions import InvalidGrant

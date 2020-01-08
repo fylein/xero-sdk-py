@@ -1,3 +1,7 @@
+"""
+Xero Accounts API
+"""
+
 from .api_base import ApiBase
 
 

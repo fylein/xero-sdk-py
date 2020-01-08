@@ -1,3 +1,7 @@
+"""
+Xero Invoices API
+"""
+
 from .api_base import ApiBase
 
 

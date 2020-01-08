@@ -1,3 +1,7 @@
+"""
+Xero SDK connection base class
+"""
+
 import requests
 import json
 import base64
