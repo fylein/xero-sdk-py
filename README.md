@@ -5,6 +5,7 @@ Python SDK to access Xero APIs
 
 1. [python 3+](https://www.python.org/downloads/)
 2. [Requests](https://pypi.org/project/requests/) library
+3. [pytest](https://pypi.org/project/pytest/) library
 
 ## Installation
 
@@ -46,6 +47,26 @@ response = connection.Invoices.get_all()
 response = connection.Invoices.get_by_id(<invoice_id>)
 ```
 
-**NOTE**: Only Invoices, Accounts, Contacts and  Tracking Categories 
+**NOTE**: Only Invoices, Accounts, Contacts and TrackingCategories 
 API classes are defined in this SDK.
+
+## Integration Tests
+
+Before executing integration tests, create a 'test_credentials.json' file
+at project root directory and enter Xero OAuth2 authentication credentials.
+
+```json
+{
+  "base_url": "<xero_base_url>",
+  "client_id": "<client_id>",
+  "client_secret": "<client_secret>",
+  "refresh_token": "<refresh_token>"
+}
+```
+
+Now run integration tests as follows:
+
+```
+python -m pytest tests/integration
+```
    
