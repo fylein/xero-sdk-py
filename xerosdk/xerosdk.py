@@ -176,4 +176,7 @@ class XeroSDK:
 
     @property
     def refresh_token(self):
+        """
+        Get the refresh_token
+        """
         return self._refresh_token
