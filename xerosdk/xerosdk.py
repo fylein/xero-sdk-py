@@ -173,3 +173,7 @@ class XeroSDK:
             raise XeroSDKError(
                 response.text, response.status_code
             )
+
+    @property
+    def refresh_token(self):
+        return self._refresh_token
