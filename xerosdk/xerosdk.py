@@ -31,7 +31,7 @@ class XeroSDK:
         self.__base_url = base_url
         self.__client_id = client_id
         self.__client_secret = client_secret
-        self.__refresh_token = refresh_token
+        self._refresh_token = refresh_token  # Fix: refresh token expiry
 
         # Create an object for each API
         self.invoices = Invoices()
@@ -102,12 +102,13 @@ class XeroSDK:
         }
         api_data = {
             "grant_type": "refresh_token",
-            "refresh_token": self.__refresh_token
+            "refresh_token": self._refresh_token  # Fix: refresh token expiry
         }
         response = requests.post(XeroSDK.TOKEN_URL, headers=api_headers, data=api_data)
 
         if response.status_code == 200:
             token = json.loads(response.text)
+            self._refresh_token = token["refresh_token"]  # Fix: refresh token expiry
             return token["access_token"]
 
         error_msg = json.loads(response.text)["error"]
@@ -172,3 +173,10 @@ class XeroSDK:
             raise XeroSDKError(
                 response.text, response.status_code
             )
+
+    @property
+    def refresh_token(self):
+        """
+        Get the refresh_token
+        """
+        return self._refresh_token
