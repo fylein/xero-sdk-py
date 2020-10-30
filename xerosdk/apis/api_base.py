@@ -121,3 +121,25 @@ class ApiBase:
         raise XeroSDKError(
             response.text, response.status_code
         )
+
+    def _get_tenant_ids(self):
+        api_headers = {
+            "authorization": "Bearer " + self.__access_token,
+        }
+        response = requests.get('https://api.xero.com/connections', headers=api_headers)
+
+        if response.status_code == 200:
+            return json.loads(response.text)
+
+        elif response.status_code == 401:
+            raise InvalidTokenError(
+                'Invalid or non-existing access token'
+            )
+        elif response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+        else:
+            raise XeroSDKError(
+                response.text, response.status_code
+            )
