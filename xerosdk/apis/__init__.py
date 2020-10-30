@@ -8,6 +8,7 @@ from .contacts import Contacts
 from .tracking_categories import TrackingCategories
 from .items import Items
 from .tenants import Tenants
+from .bank_transactions import BankTransactions
 
 __all__ = [
     'Invoices',
@@ -15,5 +16,6 @@ __all__ = [
     'Contacts',
     'TrackingCategories',
     'Items',
-    'Tenants'
+    'Tenants',
+    'BankTransactions'
 ]
