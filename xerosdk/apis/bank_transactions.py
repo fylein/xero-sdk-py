@@ -35,7 +35,9 @@ class BankTransactions(ApiBase):
             Bank Transaction dict
         """
 
-        return self._get_request(BankTransactions.GET_BANK_TRANSACTION_BY_ID.format(bank_transaction_id))
+        return self._get_request(
+            BankTransactions.GET_BANK_TRANSACTION_BY_ID.format(bank_transaction_id)
+        )
 
     def post(self, data):
         """
