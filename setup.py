@@ -6,15 +6,15 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name="xerosdk",
-    version="0.1.0",
-    author="Sanjeev Raichur",
-    author_email="sanjeev.raichur@codemonk.in",
+    version="0.2.0",
+    author="Ashwin T",
+    author_email="ashwin.t@fyle.in",
     description="Python SDK to access Xero APIs",
     license="MIT",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords=['xero', 'api', 'python', 'sdk'],
-    url="https://github.com/sanjeev-codemonk/xero-sdk-py",
+    url="https://github.com/fylein/xero-sdk-py",
     packages=setuptools.find_packages(),
     install_requires=['requests==2.22.0'],
     classifiers=[

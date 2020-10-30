@@ -30,6 +30,10 @@ connection = XeroSDK(
     client_secret='<YOUR CLIENT SECRET>',
     refresh_token='<YOUR REFRESH TOKEN>'
 )
+
+# tenant_id is required to make a call to any API
+tenant_id = connection.tenants.get_all()[0]['tenantId']
+connection.set_tenant(tenant_id)
 ```
 
 2. Access any of the API classes
@@ -40,13 +44,13 @@ USAGE: <XeroSDK INSTANCE>.<API_NAME>.<API_METHOD>(<PARAMETERS>)
 """
 
 # Get a list of all Invoices
-response = connection.Invoices.get_all()
+response = connection.invoices.get_all()
 
 # Get an Invoice by id
-response = connection.Invoices.get_by_id(<invoice_id>)
+response = connection.invoices.get_by_id(<invoice_id>)
 ```
 
-**NOTE**: Only Invoices, Accounts, Contacts and TrackingCategories 
+**NOTE**: Only Tenants, Invoices, Accounts, Contacts, Items and TrackingCategories 
 API classes are defined in this SDK.
 
 ## Integration Tests
