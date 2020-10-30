@@ -6,10 +6,12 @@ from .invoices import Invoices
 from .accounts import Accounts
 from .contacts import Contacts
 from .tracking_categories import TrackingCategories
+from .items import Items
 
 __all__ = [
     'Invoices',
     'Accounts',
     'Contacts',
-    'TrackingCategories'
+    'TrackingCategories',
+    'Items'
 ]
