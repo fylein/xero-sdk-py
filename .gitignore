@@ -108,3 +108,10 @@ venv.bak/
 
 # media folder
 media/**
+
+# VS Code
+.vscode
+
+# Test files
+dry_run.py
+test.py
