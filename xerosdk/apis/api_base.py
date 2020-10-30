@@ -131,7 +131,7 @@ class ApiBase:
         if response.status_code == 200:
             return json.loads(response.text)
 
-        elif response.status_code == 401:
+        if response.status_code == 401:
             raise InvalidTokenError(
                 'Invalid or non-existing access token'
             )

@@ -25,13 +25,13 @@ class XeroSDK:
     TOKEN_URL = "https://identity.xero.com/connect/token"
     AUTHORIZE_URL = "https://login.xero.com/identity/connect/authorize"
 
-    def __init__(self, base_url, client_id, client_secret, refresh_token, tenant_id=None):
+    def __init__(self, base_url, client_id, client_secret, refresh_token):
         # Store the input parameters
         self.__base_url = base_url
         self.__client_id = client_id
         self.__client_secret = client_secret
         self._refresh_token = refresh_token  # Fix: refresh token expiry
-        self.__tenant_id = tenant_id
+        self.__tenant_id = None
 
         # Create an object for each API
         self.invoices = Invoices()
@@ -46,7 +46,6 @@ class XeroSDK:
 
         # Refresh access token
         self.refresh_access_token()
-        self.set_tenant_id(tenant_id)
 
     def set_server_url(self):
         """
