@@ -38,6 +38,7 @@ class XeroSDK:
         self.accounts = Accounts()
         self.contacts = Contacts()
         self.tracking_categories = TrackingCategories()
+        self.bank_transactions = BankTransactions()
 
         # Set the server url
         self.set_server_url()
@@ -56,6 +57,7 @@ class XeroSDK:
         self.accounts.set_server_url(base_url)
         self.contacts.set_server_url(base_url)
         self.tracking_categories.set_server_url(base_url)
+        self.bank_transactions.set_server_url(base_url)
 
     def set_tenant_id(self, tenant_id):
         """
@@ -69,6 +71,7 @@ class XeroSDK:
         self.accounts.set_tenant_id(tenant_id)
         self.contacts.set_tenant_id(tenant_id)
         self.tracking_categories.set_tenant_id(tenant_id)
+        self.bank_transactions.set_tenant_id(tenant_id)
 
     def refresh_access_token(self):
         """
@@ -81,6 +84,7 @@ class XeroSDK:
         self.accounts.change_access_token(access_token)
         self.contacts.change_access_token(access_token)
         self.tracking_categories.change_access_token(access_token)
+        self.bank_transactions.change_access_token(access_token)
 
         # Get tenant ID
         self.__get_tenant_id(access_token)
