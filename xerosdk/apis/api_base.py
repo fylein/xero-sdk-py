@@ -148,7 +148,7 @@ class ApiBase:
         """Create a HTTP post request.
 
         Parameters:
-            data (dict): Data to be sent to Xero API
+            data: Data to be sent to Xero API
             api_url (str): Url of the Xero API.
 
         Returns:
@@ -156,12 +156,12 @@ class ApiBase:
         """
 
         api_headers = {
-            'Authorization': self.__access_token,
+            'Authorization': "Bearer {}".format(self.__access_token),
             'xero-tenant-id': self.__tenant_id,
-            'accept': '*',
+            'Accept': 'application/json',
             'Content-Type': '*'
         }
-        response = requests.put(
+        response = requests.post(
             '{0}{1}'.format(self.__server_url, api_url),
             headers=api_headers,
             data=data
@@ -172,7 +172,7 @@ class ApiBase:
             return result
 
         if response.status_code == 400:
-            error_msg = json.loads(response.text)["Message"]
+            error_msg = response.text
             raise XeroSDKError(
                 error_msg, response.status_code
             )
