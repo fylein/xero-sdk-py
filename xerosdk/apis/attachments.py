@@ -1,3 +1,6 @@
+"""
+Xero Attachments API
+"""
 from typing import BinaryIO
 
 from .api_base import ApiBase
