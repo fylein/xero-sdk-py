@@ -135,14 +135,14 @@ class ApiBase:
             raise InvalidTokenError(
                 'Invalid or non-existing access token'
             )
-        elif response.status_code == 500:
+        if response.status_code == 500:
             raise InternalServerError(
                 'Internal server error'
             )
-        else:
-            raise XeroSDKError(
-                response.text, response.status_code
-            )
+
+        raise XeroSDKError(
+            response.text, response.status_code
+        )
 
     def _post_attachment(self, data, api_url):
         """Create a HTTP post request.
