@@ -135,11 +135,52 @@ class ApiBase:
             raise InvalidTokenError(
                 'Invalid or non-existing access token'
             )
-        elif response.status_code == 500:
+        if response.status_code == 500:
             raise InternalServerError(
                 'Internal server error'
             )
-        else:
+
+        raise XeroSDKError(
+            response.text, response.status_code
+        )
+
+    def _post_attachment(self, data, api_url):
+        """Create a HTTP post request.
+
+        Parameters:
+            data: Data to be sent to Xero API
+            api_url (str): Url of the Xero API.
+
+        Returns:
+            A response from the request (dict).
+        """
+
+        api_headers = {
+            'Authorization': "Bearer {}".format(self.__access_token),
+            'xero-tenant-id': self.__tenant_id,
+            'Accept': 'application/json',
+            'Content-Type': '*'
+        }
+        response = requests.post(
+            '{0}{1}'.format(self.__server_url, api_url),
+            headers=api_headers,
+            data=data
+        )
+
+        if response.status_code == 200:
+            result = json.loads(response.text)
+            return result
+
+        if response.status_code == 400:
+            error_msg = response.text
             raise XeroSDKError(
-                response.text, response.status_code
+                error_msg, response.status_code
             )
+        if response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+
+        raise XeroSDKError(
+            response.text, response.status_code
+        )
