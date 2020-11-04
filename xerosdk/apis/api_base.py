@@ -141,7 +141,7 @@ class ApiBase:
             return json.loads(response.text)
 
         elif response.status_code == 400:
-            error_msg = json.loads(response.text)["Elements"]
+            error_msg = json.loads(response.text)
             raise ValidationException(error_msg, response.status_code)
 
         elif response.status_code == 401:
@@ -191,7 +191,7 @@ class ApiBase:
             return result
 
         elif response.status_code == 400:
-            error_msg = json.loads(response.text)["Elements"]
+            error_msg = json.loads(response.text)
             raise ValidationException(error_msg, response.status_code)
 
         elif response.status_code == 401:
