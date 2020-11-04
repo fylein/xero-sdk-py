@@ -37,5 +37,17 @@ class UnsuccessfulAuthentication(XeroSDKError):
     """Invalid xero tenant ID or xero-tenant-id header missing"""
 
 
+class ValidationException(XeroSDKError):
+    """Xero validation exception occurred, 400 error"""
+
+
+class NoPrivilegeError(XeroSDKError):
+    """The user has insufficient privilege, 403 error."""
+
+
+class NotFoundItemError(XeroSDKError):
+    """Not found the item from URL, 404 error."""
+
+
 class InternalServerError(XeroSDKError):
     """Internal server error, 500 error"""
