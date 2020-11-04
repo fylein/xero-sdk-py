@@ -110,7 +110,7 @@ class ApiBase:
 
         elif response.status_code == 400:
             error_msg = json.loads(response.text)
-            raise ValidationException(error_msg, response.status_code)
+            raise WrongParamsError(error_msg, response.status_code)
 
         elif response.status_code == 401:
             error_msg = json.loads(response.text)
@@ -142,7 +142,7 @@ class ApiBase:
 
         elif response.status_code == 400:
             error_msg = json.loads(response.text)
-            raise ValidationException(error_msg, response.status_code)
+            raise WrongParamsError(error_msg, response.status_code)
 
         elif response.status_code == 401:
             error_msg = json.loads(response.text)
@@ -190,25 +190,26 @@ class ApiBase:
             result = json.loads(response.text)
             return result
 
-        elif response.status_code == 400:
-            error_msg = json.loads(response.text)
-            raise ValidationException(error_msg, response.status_code)
+        if response.status_code == 400:
+            error_msg = response.text
+            raise WrongParamsError(error_msg, response.status_code)
 
-        elif response.status_code == 401:
+        if response.status_code == 401:
             error_msg = json.loads(response.text)
             raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
 
-        elif response.status_code == 403:
-            error_msg = json.loads(response.text)
+        if response.status_code == 403:
+            error_msg = response.text
             raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
 
-        elif response.status_code == 404:
+        if response.status_code == 404:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
 
-        elif response.status_code == 500:
+        if response.status_code == 500:
             error_msg = json.loads(response.text)
             raise InternalServerError('Internal server error', error_msg)
 
-        else:
-            raise XeroSDKError(json.loads(response.text), response.status_code)
+        raise XeroSDKError(
+            'Status code {0}'.format(response.status_code), response.text
+        )

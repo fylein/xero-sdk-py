@@ -37,7 +37,7 @@ class UnsuccessfulAuthentication(XeroSDKError):
     """Invalid xero tenant ID or xero-tenant-id header missing"""
 
 
-class ValidationException(XeroSDKError):
+class WrongParamsError(XeroSDKError):
     """Xero validation exception occurred, 400 error"""
 
 
