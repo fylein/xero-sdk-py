@@ -109,17 +109,18 @@ class ApiBase:
             return result
 
         if response.status_code == 400:
-            error_msg = json.loads(response.text)["Message"]
+            error_msg = json.loads(response.text)
             raise XeroSDKError(
                 error_msg, response.status_code
             )
         if response.status_code == 500:
+            error_msg = json.loads(response.text)
             raise InternalServerError(
-                'Internal server error'
+                'Internal server error', error_msg
             )
 
         raise XeroSDKError(
-            response.text, response.status_code
+            json.loads(response.text), response.status_code
         )
 
     def _get_tenant_ids(self):
@@ -172,13 +173,14 @@ class ApiBase:
             return result
 
         if response.status_code == 400:
-            error_msg = response.text
+            error_msg = json.loads(response.text)
             raise XeroSDKError(
                 error_msg, response.status_code
             )
         if response.status_code == 500:
+            error_msg = json.loads(response.text)
             raise InternalServerError(
-                'Internal server error'
+                'Internal server error', error_msg
             )
 
         raise XeroSDKError(
