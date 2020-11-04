@@ -129,7 +129,7 @@ class ApiBase:
             raise InternalServerError('Internal server error', error_msg)
 
         raise XeroSDKError(
-            json.loads(response.text), response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
 
     def _get_tenant_ids(self):
