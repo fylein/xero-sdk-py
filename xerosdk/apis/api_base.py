@@ -109,17 +109,27 @@ class ApiBase:
             return result
 
         if response.status_code == 400:
-            error_msg = json.loads(response.text)["Message"]
-            raise XeroSDKError(
-                error_msg, response.status_code
-            )
+            error_msg = json.loads(response.text)
+            raise WrongParamsError(error_msg, response.status_code)
+
+        if response.status_code == 401:
+            error_msg = json.loads(response.text)
+            raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
+
+        if response.status_code == 403:
+            error_msg = json.loads(response.text)
+            raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
+
+        if response.status_code == 404:
+            error_msg = json.loads(response.text)
+            raise NotFoundItemError('Not found item with ID', error_msg)
+
         if response.status_code == 500:
-            raise InternalServerError(
-                'Internal server error'
-            )
+            error_msg = json.loads(response.text)
+            raise InternalServerError('Internal server error', error_msg)
 
         raise XeroSDKError(
-            response.text, response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
 
     def _get_tenant_ids(self):
@@ -131,17 +141,28 @@ class ApiBase:
         if response.status_code == 200:
             return json.loads(response.text)
 
+        if response.status_code == 400:
+            error_msg = json.loads(response.text)
+            raise WrongParamsError(error_msg, response.status_code)
+
         if response.status_code == 401:
-            raise InvalidTokenError(
-                'Invalid or non-existing access token'
-            )
+            error_msg = json.loads(response.text)
+            raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
+
+        if response.status_code == 403:
+            error_msg = json.loads(response.text)
+            raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
+
+        if response.status_code == 404:
+            error_msg = json.loads(response.text)
+            raise NotFoundItemError('Not found item with ID', error_msg)
+
         if response.status_code == 500:
-            raise InternalServerError(
-                'Internal server error'
-            )
+            error_msg = json.loads(response.text)
+            raise InternalServerError('Internal server error', error_msg)
 
         raise XeroSDKError(
-            response.text, response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
 
     def _post_attachment(self, data, api_url):
@@ -173,14 +194,24 @@ class ApiBase:
 
         if response.status_code == 400:
             error_msg = response.text
-            raise XeroSDKError(
-                error_msg, response.status_code
-            )
+            raise WrongParamsError(error_msg, response.status_code)
+
+        if response.status_code == 401:
+            error_msg = json.loads(response.text)
+            raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
+
+        if response.status_code == 403:
+            error_msg = response.text
+            raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
+
+        if response.status_code == 404:
+            error_msg = json.loads(response.text)
+            raise NotFoundItemError('Not found item with ID', error_msg)
+
         if response.status_code == 500:
-            raise InternalServerError(
-                'Internal server error'
-            )
+            error_msg = json.loads(response.text)
+            raise InternalServerError('Internal server error', error_msg)
 
         raise XeroSDKError(
-            response.text, response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
