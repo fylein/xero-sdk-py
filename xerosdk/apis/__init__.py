@@ -10,6 +10,7 @@ from .items import Items
 from .tenants import Tenants
 from .bank_transactions import BankTransactions
 from .attachments import Attachments
+from .organisations import Organisations
 
 __all__ = [
     'Invoices',
@@ -19,5 +20,6 @@ __all__ = [
     'Items',
     'Tenants',
     'BankTransactions',
-    'Attachments'
+    'Attachments',
+    'Organisations'
 ]
