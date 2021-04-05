@@ -33,7 +33,7 @@ connection = XeroSDK(
 
 # tenant_id is required to make a call to any API
 tenant_id = connection.tenants.get_all()[0]['tenantId']
-connection.set_tenant(tenant_id)
+connection.set_tenant(tenant_id)  ##will update the readme.
 ```
 
 2. Access any of the API classes
