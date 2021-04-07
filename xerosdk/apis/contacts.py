@@ -38,13 +38,13 @@ class Contacts(ApiBase):
         return self._post_request(data, Contacts.POST_CONTACTS)
 
 
-    def search_contact_by_display_name(self,display_name=None):
+    def search_contact_by_display_name(self,display_name: str):
         """
         Search contact by display name
         :param display_name: Xero Contact Name
         :return: Contact
         """
-        
+
         response = self._get_request(Contacts.SEARCH_CONTACT.format(display_name))
 
-        return response['Contacts'][0] if len(response['Contacts']) > 0 else None
+        return response
