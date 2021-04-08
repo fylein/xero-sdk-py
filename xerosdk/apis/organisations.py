@@ -10,7 +10,7 @@ class Organisations(ApiBase):
     Class for Organisations API
     """
 
-    GET_ORGANISATIONS = "/api.xro/2.0/Organisation"
+    GET_ORGANISATIONS = '/api.xro/2.0/Organisation'
 
     def get_all(self):
         """

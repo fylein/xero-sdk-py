@@ -22,8 +22,8 @@ class XeroSDK:
         refresh_token (str): Refresh token for Xero API
     """
 
-    TOKEN_URL = "https://identity.xero.com/connect/token"
-    AUTHORIZE_URL = "https://login.xero.com/identity/connect/authorize"
+    TOKEN_URL = 'https://identity.xero.com/connect/token'
+    AUTHORIZE_URL = 'https://login.xero.com/identity/connect/authorize'
 
     def __init__(self, base_url, client_id, client_secret, refresh_token):
         # Store the input parameters
