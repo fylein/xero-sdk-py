@@ -10,8 +10,9 @@ class Contacts(ApiBase):
     Class for Contacts API
     """
 
-    GET_CONTACTS = "/api.xro/2.0/contacts"
-    POST_CONTACTS = "/api.xro/2.0/contacts"
+    GET_CONTACTS = '/api.xro/2.0/contacts'
+    POST_CONTACTS = '/api.xro/2.0/contacts'
+    SEARCH_CONTACT = '/api.xro/2.0/Contacts?where=Name="{0}"'
 
     def get_all(self):
         """
@@ -35,3 +36,14 @@ class Contacts(ApiBase):
         """
 
         return self._post_request(data, Contacts.POST_CONTACTS)
+
+    def search_contact_by_contact_name(self, contact_name: str):
+        """
+        Search contact by Contact Name
+        :param contact_name: Xero Contact Name
+        :return: Contact
+        """
+
+        response = self._get_request(Contacts.SEARCH_CONTACT.format(contact_name))
+
+        return response['Contacts'][0] if response['Contacts'] else None

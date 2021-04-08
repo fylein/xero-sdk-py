@@ -10,7 +10,7 @@ class Items(ApiBase):
     Class for Items API
     """
 
-    GET_ITEMS = "/api.xro/2.0/Items"
+    GET_ITEMS = '/api.xro/2.0/Items'
 
     def get_all(self):
         """

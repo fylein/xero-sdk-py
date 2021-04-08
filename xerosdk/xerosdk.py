@@ -22,8 +22,8 @@ class XeroSDK:
         refresh_token (str): Refresh token for Xero API
     """
 
-    TOKEN_URL = "https://identity.xero.com/connect/token"
-    AUTHORIZE_URL = "https://login.xero.com/identity/connect/authorize"
+    TOKEN_URL = 'https://identity.xero.com/connect/token'
+    AUTHORIZE_URL = 'https://login.xero.com/identity/connect/authorize'
 
     def __init__(self, base_url, client_id, client_secret, refresh_token):
         # Store the input parameters
@@ -115,36 +115,36 @@ class XeroSDK:
         """
 
         api_headers = {
-            "authorization": "Basic " + str(
+            'authorization': 'Basic ' + str(
                 base64.b64encode(
-                    (self.__client_id + ":" + self.__client_secret).encode("utf-8")
-                ), "utf-8"
+                    (self.__client_id + ':' + self.__client_secret).encode('utf-8')
+                ), 'utf-8'
             ),
         }
         api_data = {
-            "grant_type": "refresh_token",
-            "refresh_token": self._refresh_token  # Fix: refresh token expiry
+            'grant_type': 'refresh_token',
+            'refresh_token': self._refresh_token  # Fix: refresh token expiry
         }
         response = requests.post(XeroSDK.TOKEN_URL, headers=api_headers, data=api_data)
 
         if response.status_code == 200:
             token = json.loads(response.text)
-            self._refresh_token = token["refresh_token"]  # Fix: refresh token expiry
-            return token["access_token"]
+            self._refresh_token = token['refresh_token']  # Fix: refresh token expiry
+            return token['access_token']
 
-        error_msg = json.loads(response.text)["error"]
+        error_msg = json.loads(response.text)['error']
         if response.status_code == 400:
-            if error_msg == "invalid_client":
+            if error_msg == 'invalid_client':
                 raise InvalidClientError(
                     'Invalid client ID or client secret or refresh token'
                 )
 
-            if error_msg == "invalid_grant":
+            if error_msg == 'invalid_grant':
                 raise InvalidGrant(
                     'Invalid refresh token'
                 )
 
-            if error_msg == "unsupported_grant_type":
+            if error_msg == 'unsupported_grant_type':
                 raise UnsupportedGrantType(
                     'Invalid or non-existing grant type in request body'
                 )

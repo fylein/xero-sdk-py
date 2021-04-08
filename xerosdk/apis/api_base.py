@@ -183,7 +183,7 @@ class ApiBase:
 
     def _get_tenant_ids(self):
         api_headers = {
-            "authorization": "Bearer " + self.__access_token,
+            'authorization': 'Bearer ' + self.__access_token,
         }
         response = requests.get('https://api.xero.com/connections', headers=api_headers)
 
@@ -226,7 +226,7 @@ class ApiBase:
         """
 
         api_headers = {
-            'Authorization': "Bearer {}".format(self.__access_token),
+            'Authorization': 'Bearer {}'.format(self.__access_token),
             'xero-tenant-id': self.__tenant_id,
             'Accept': 'application/json',
             'Content-Type': '*'

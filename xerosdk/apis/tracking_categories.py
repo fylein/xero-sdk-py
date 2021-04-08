@@ -10,7 +10,7 @@ class TrackingCategories(ApiBase):
     Class for Tracking Categories API
     """
 
-    GET_TRACKING_CATEGORIES = "/api.xro/2.0/trackingcategories"
+    GET_TRACKING_CATEGORIES = '/api.xro/2.0/trackingcategories'
 
     def get_all(self):
         """
