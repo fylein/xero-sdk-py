@@ -10,8 +10,8 @@ class Contacts(ApiBase):
     Class for Contacts API
     """
 
-    GET_CONTACTS = "/api.xro/2.0/contacts"
-    POST_CONTACTS = "/api.xro/2.0/contacts"
+    GET_CONTACTS = '/api.xro/2.0/contacts'
+    POST_CONTACTS = '/api.xro/2.0/contacts'
     SEARCH_CONTACT = '/api.xro/2.0/Contacts?where=Name="{0}"'
 
     def get_all(self):
