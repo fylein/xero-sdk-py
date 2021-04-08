@@ -39,11 +39,11 @@ class Contacts(ApiBase):
 
     def search_contact_by_contact_name(self, contact_name: str):
         """
-        Search contact by display name
+        Search contact by Contact Name
         :param contact_name: Xero Contact Name
         :return: Contact
         """
 
         response = self._get_request(Contacts.SEARCH_CONTACT.format(contact_name))
 
-        return response['Contacts'][0] if len(response['Contacts']) > 0 else None
+        return response['Contacts'][0] if response['Contacts'] else None
