@@ -16,10 +16,10 @@ def get_mock_xero_dict(filename):
 def get_mock_xero_from_file(filename):
     mock_xero_dict = get_mock_xero_dict(filename)
     mock_xero = Mock()
-    mock_xero.Invoices.get_all.return_value = mock_xero_dict["invoices"]
-    mock_xero.Accounts.get_all.return_value = mock_xero_dict["accounts"]
-    mock_xero.Contacts.get_all.return_value = mock_xero_dict["contacts"]
-    mock_xero.TrackingCategories.get_all.return_value = mock_xero_dict["tracking_categories"]
+    mock_xero.Invoices.get_all.return_value = mock_xero_dict['invoices']
+    mock_xero.Accounts.get_all.return_value = mock_xero_dict['accounts']
+    mock_xero.Contacts.get_all.return_value = mock_xero_dict['contacts']
+    mock_xero.TrackingCategories.get_all.return_value = mock_xero_dict['tracking_categories']
     return mock_xero
 
 
