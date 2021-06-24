@@ -80,7 +80,7 @@ class ApiBase:
             )
 
         raise XeroSDKError(
-            response.text, response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
 
     def _update_request(self, data, api_url):

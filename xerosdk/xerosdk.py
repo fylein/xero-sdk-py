@@ -159,7 +159,7 @@ class XeroSDK:
             )
 
         raise XeroSDKError(
-            response.text, response.status_code
+            'Status code {0}'.format(response.status_code), response.text
         )
 
     @property
