@@ -95,12 +95,12 @@ class ApiBase:
         page = 1
         has_more = True
 
-        while (has_more):
+        while has_more:
             response = self._get_request(api_url, page)
             page += 1
             yield response
 
-            if (not response[attribute_type]):
+            if not response[attribute_type]:
                 has_more = False
 
     def _update_request(self, data, api_url):
