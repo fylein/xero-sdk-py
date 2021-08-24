@@ -21,6 +21,3 @@ class Accounts(ApiBase):
         """
 
         return self._get_request(Accounts.GET_ACCOUNTS)
-
-    def post(self, data):
-        return self._post_request(data, Accounts.GET_ACCOUNTS)
