@@ -46,13 +46,12 @@ class ApiBase:
 
         self.__tenant_id = tenant_id
 
-    def _get_request_per_page(self, api_url, page):
+    def _get_request(self, api_url, page = None):
         """
-        HTTP get request to a given XERO API URL
+        HTTP get request to a given Xero API URL
 
         Parameters:
             api_url (str): URL of Xero API
-            page : page number
         """
 
         api_headers = {
@@ -62,7 +61,7 @@ class ApiBase:
         }
 
         api_url = '{0}?page={1}'.format(api_url, page)
-
+        print(api_url)
         response = requests.get(
             self.__server_url+api_url,
             headers=api_headers
@@ -97,52 +96,12 @@ class ApiBase:
         has_more = True
 
         while (has_more):
-            response = self._get_request_per_page(api_url, page)
-
-            for resp in response[attribute_type]:
-                yield resp
-
+            response = self._get_request(api_url, page)
             page += 1
+            yield response
 
             if (not response[attribute_type]):
                 has_more = False
-
-    def _get_request(self, api_url):
-        """
-        HTTP get request to a given Xero API URL
-
-        Parameters:
-            api_url (str): URL of Xero API
-        """
-
-        api_headers = {
-            'authorization': 'Bearer ' + self.__access_token,
-            'xero-tenant-id': self.__tenant_id,
-            'accept': 'application/json'
-        }
-
-        response = requests.get(
-            self.__server_url+api_url,
-            headers=api_headers
-        )
-
-        if response.status_code == 200:
-            result = json.loads(response.text)
-            return result
-
-        if response.status_code == 403:
-            raise UnsuccessfulAuthentication(
-                'Invalid xero tenant ID or xero-tenant-id header missing'
-            )
-
-        if response.status_code == 500:
-            raise InternalServerError(
-                'Internal server error'
-            )
-
-        raise XeroSDKError(
-            'Status code {0}'.format(response.status_code), response.text
-        )
 
     def _update_request(self, data, api_url):
         """

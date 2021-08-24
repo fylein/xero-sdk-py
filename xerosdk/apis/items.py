@@ -20,4 +20,4 @@ class Items(ApiBase):
             List of all Items
         """
 
-        return list(self._get_all(Items.GET_ITEMS, 'Items'))
+        return self._get_request(Items.GET_ITEMS)

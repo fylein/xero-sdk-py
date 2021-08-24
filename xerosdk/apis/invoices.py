@@ -10,7 +10,7 @@ class Invoices(ApiBase):
     Class for Invoices API
     """
 
-    GET_INVOICES = '/api.xro/2.0/invoices'
+    GET_INVOICES = '/api.xro/2.0/Invoices'
     GET_INVOICE_BY_ID = '/api.xro/2.0/invoices/{0}'
     POST_INVOICE = '/api.xro/2.0/invoices'
 
@@ -22,7 +22,7 @@ class Invoices(ApiBase):
             List of all invoices
         """
 
-        return self._get_request(Invoices.GET_INVOICES)
+        return list(self._get_all(Invoices.GET_INVOICES, 'Invoices'))
 
     def get_by_id(self, invoice_id):
         """

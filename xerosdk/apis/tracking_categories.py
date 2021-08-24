@@ -19,5 +19,4 @@ class TrackingCategories(ApiBase):
         Returns:
             List of all tracking categories
         """
-
-        return list(self._get_all(TrackingCategories.GET_TRACKING_CATEGORIES, 'TrackingCategories'))
+        return self._get_request(TrackingCategories.GET_TRACKING_CATEGORIES)

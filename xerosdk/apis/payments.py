@@ -10,9 +10,9 @@ class Payments(ApiBase):
     Class for Payments API
     """
 
-    GET_INVOICES = '/api.xro/2.0/payments'
-    GET_INVOICE_BY_ID = '/api.xro/2.0/payments/{0}'
-    POST_INVOICE = '/api.xro/2.0/payments'
+    GET_PAYMENTS = '/api.xro/2.0/payments'
+    GET_PAYMENT_BY_ID = '/api.xro/2.0/payments/{0}'
+    POST_PAYMENT = '/api.xro/2.0/payments'
 
     def get_all(self):
         """
@@ -22,7 +22,7 @@ class Payments(ApiBase):
             List of all payments
         """
 
-        return self._get_request(Payments.GET_INVOICES)
+        return list(self._get_all(Payments.GET_PAYMENTS, 'Payments'))
 
     def get_by_id(self, payment_id):
         """
@@ -35,7 +35,7 @@ class Payments(ApiBase):
             Payment dict
         """
 
-        return self._get_request(Payments.GET_INVOICE_BY_ID.format(payment_id))
+        return self._get_request(Payments.GET_PAYMENT_BY_ID.format(payment_id))
 
     def post(self, data):
         """
@@ -48,4 +48,4 @@ class Payments(ApiBase):
              Response from API
         """
 
-        return self._update_request(data, Payments.POST_INVOICE)
+        return self._update_request(data, Payments.POST_PAYMENT)

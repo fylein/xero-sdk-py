@@ -22,7 +22,7 @@ class BankTransactions(ApiBase):
             List of all Bank Transactions
         """
 
-        return self._get_request(BankTransactions.GET_BANK_TRANSACTIONS)
+        return list(self._get_all(BankTransactions.GET_BANK_TRANSACTIONS, 'BankTransactions'))
 
     def get_by_id(self, bank_transaction_id):
         """
