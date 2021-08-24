@@ -61,7 +61,7 @@ class ApiBase:
         }
 
         api_url = '{0}?page={1}'.format(api_url, page)
-        print(api_url)
+
         response = requests.get(
             self.__server_url+api_url,
             headers=api_headers
