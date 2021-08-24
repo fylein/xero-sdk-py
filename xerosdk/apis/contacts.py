@@ -22,7 +22,7 @@ class Contacts(ApiBase):
             List of all contacts
         """
 
-        return self._get_request(Contacts.GET_CONTACTS)
+        return list(self._get_all(Contacts.GET_CONTACTS, 'Contacts'))
 
     def post(self, data):
         """

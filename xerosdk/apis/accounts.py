@@ -20,4 +20,7 @@ class Accounts(ApiBase):
             List of all accounts
         """
 
-        return self._get_request(Accounts.GET_ACCOUNTS)
+        return self._get_all(Accounts.GET_ACCOUNTS, 'Accounts')
+
+    def post(self, data):
+        return self._post_request(data, Accounts.GET_ACCOUNTS)
