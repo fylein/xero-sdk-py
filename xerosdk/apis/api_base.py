@@ -91,6 +91,7 @@ class ApiBase:
 
         Parameters:
             api_url (str): URL of Xero API
+            attribute_type: API calling Attribute
         """
         page = 1
         has_more = True
