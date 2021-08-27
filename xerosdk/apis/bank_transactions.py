@@ -23,7 +23,7 @@ class BankTransactions(ApiBase):
         """
 
         return self._get_request(BankTransactions.GET_BANK_TRANSACTIONS)
-    
+
     def list_all_generator(self):
         """
         Get all Bank Transactions

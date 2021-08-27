@@ -45,7 +45,7 @@ class ApiBase:
         """
 
         self.__tenant_id = tenant_id
-    
+
     def _search_request(self, api_url, parameter: str, value: str):
         """
         HTTP get request to a given Xero API URL
@@ -53,7 +53,7 @@ class ApiBase:
         Parameters:
             api_url (str): URL of Xero API
         """
-        
+
         api_headers = {
             'authorization': 'Bearer ' + self.__access_token,
             'xero-tenant-id': self.__tenant_id,
@@ -84,7 +84,6 @@ class ApiBase:
         raise XeroSDKError(
             'Status code {0}'.format(response.status_code), response.text
         )
-        
 
     def _get_request(self, api_url, page = None):
         """
