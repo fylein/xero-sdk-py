@@ -22,7 +22,17 @@ class Invoices(ApiBase):
             List of all invoices
         """
 
-        return list(self._get_all(Invoices.GET_INVOICES, 'Invoices'))
+        return self._get_request(Invoices.GET_INVOICES)
+
+    def list_all_generator(self):
+        """
+        Get all invoices
+
+        Returns:
+            List of all invoices with pagination
+        """
+
+        return list(self._get_all_generator(Invoices.GET_INVOICES, 'Invoices'))
 
     def get_by_id(self, invoice_id):
         """

@@ -22,7 +22,17 @@ class BankTransactions(ApiBase):
             List of all Bank Transactions
         """
 
-        return list(self._get_all(BankTransactions.GET_BANK_TRANSACTIONS, 'BankTransactions'))
+        return self._get_request(BankTransactions.GET_BANK_TRANSACTIONS)
+    
+    def list_all_generator(self):
+        """
+        Get all Bank Transactions
+
+        Returns:
+            List of all transactions with pagination and generator
+        """
+
+        return list(self._get_all_generator(BankTransactions.GET_BANK_TRANSACTIONS, 'BankTransactions'))
 
     def get_by_id(self, bank_transaction_id):
         """
