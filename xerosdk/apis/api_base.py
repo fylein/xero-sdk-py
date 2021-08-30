@@ -123,7 +123,7 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
-    def _get_all_generator(self, api_url, attribute_type):
+    def _get_all_generator(self, api_url: str, attribute_type: str):
         """
         HTTP get request to a given Xero API URL
 

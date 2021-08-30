@@ -12,7 +12,6 @@ class Contacts(ApiBase):
 
     GET_CONTACTS = '/api.xro/2.0/Contacts'
     POST_CONTACTS = '/api.xro/2.0/Contacts'
-    SEARCH_CONTACT = '/api.xro/2.0/Contacts'
 
     def get_all(self):
         """
@@ -54,6 +53,6 @@ class Contacts(ApiBase):
         :return: Contact
         """
 
-        response = self._search_request(Contacts.SEARCH_CONTACT, 'Name', contact_name)
+        response = self._search_request(Contacts.GET_CONTACTS, 'Name', contact_name)
 
         return response['Contacts'][0] if response['Contacts'] else None

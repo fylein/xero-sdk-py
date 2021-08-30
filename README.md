@@ -46,6 +46,9 @@ USAGE: <XeroSDK INSTANCE>.<API_NAME>.<API_METHOD>(<PARAMETERS>)
 # Get a list of all Invoices
 response = connection.invoices.get_all()
 
+# Get a list of all Invoices using generator
+response = connection.invoives.list_all_generator()
+
 # Get an Invoice by id
 response = connection.invoices.get_by_id(<invoice_id>)
 ```
