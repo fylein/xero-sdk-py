@@ -46,7 +46,7 @@ class ApiBase:
 
         self.__tenant_id = tenant_id
 
-    def _get_request(self, api_url, additional_headers: dict = {}):
+    def _search_request(self, api_url, parameter: str, value: str):
         """
         HTTP get request to a given Xero API URL
 
@@ -61,6 +61,8 @@ class ApiBase:
             'accept': 'application/json',
             **additional_headers
         }
+
+        api_url = '{0}?where={1}="{2}"'.format(api_url, parameter, value)
 
         response = requests.get(
             self.__server_url+api_url,
@@ -84,6 +86,63 @@ class ApiBase:
         raise XeroSDKError(
             'Status code {0}'.format(response.status_code), response.text
         )
+
+    def _get_request(self, api_url, page = None, additional_headers: dict = {}):
+        """
+        HTTP get request to a given Xero API URL
+
+        Parameters:
+            api_url (str): URL of Xero API
+        """
+
+        api_headers = {
+            'authorization': 'Bearer ' + self.__access_token,
+            'xero-tenant-id': self.__tenant_id,
+            'accept': 'application/json'
+        }
+
+        api_url = '{0}?page={1}'.format(api_url, page)
+        response = requests.get(
+            self.__server_url+api_url,
+            headers=api_headers
+        )
+
+        if response.status_code == 200:
+            result = json.loads(response.text)
+            return result
+
+        if response.status_code == 403:
+            raise UnsuccessfulAuthentication(
+                'Invalid xero tenant ID or xero-tenant-id header missing'
+            )
+
+        if response.status_code == 500:
+            raise InternalServerError(
+                'Internal server error'
+            )
+
+        raise XeroSDKError(
+            'Status code {0}'.format(response.status_code), response.text
+        )
+
+    def _get_all_generator(self, api_url: str, attribute_type: str):
+        """
+        HTTP get request to a given Xero API URL
+
+        Parameters:
+            api_url (str): URL of Xero API
+            attribute_type: API calling Attribute
+        """
+        page = 1
+        has_more = True
+
+        while has_more:
+            response = self._get_request(api_url, page)
+            page += 1
+            yield response
+
+            if not response[attribute_type]:
+                has_more = False
 
     def _update_request(self, data, api_url):
         """

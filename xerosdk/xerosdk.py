@@ -31,7 +31,6 @@ class XeroSDK:
         self.__client_id = client_id
         self.__client_secret = client_secret
         self._refresh_token = refresh_token  # Fix: refresh token expiry
-        self.__tenant_id = None
 
         # Create an object for each API
         self.invoices = Invoices()

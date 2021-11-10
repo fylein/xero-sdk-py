@@ -10,7 +10,7 @@ class Invoices(ApiBase):
     Class for Invoices API
     """
 
-    GET_INVOICES = '/api.xro/2.0/invoices'
+    GET_INVOICES = '/api.xro/2.0/Invoices'
     GET_INVOICE_BY_ID = '/api.xro/2.0/invoices/{0}'
     POST_INVOICE = '/api.xro/2.0/invoices'
 
@@ -23,6 +23,16 @@ class Invoices(ApiBase):
         """
 
         return self._get_request(Invoices.GET_INVOICES)
+
+    def list_all_generator(self):
+        """
+        Get all invoices
+
+        Returns:
+            List of all invoices with pagination
+        """
+
+        return list(self._get_all_generator(Invoices.GET_INVOICES, 'Invoices'))
 
     def get_by_id(self, invoice_id):
         """

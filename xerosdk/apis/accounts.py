@@ -10,7 +10,7 @@ class Accounts(ApiBase):
     Class for Accounts API
     """
 
-    GET_ACCOUNTS = '/api.xro/2.0/accounts'
+    GET_ACCOUNTS = '/api.xro/2.0/Accounts'
 
     def get_all(self, modified_after: str = None):
         """

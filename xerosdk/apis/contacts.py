@@ -10,9 +10,8 @@ class Contacts(ApiBase):
     Class for Contacts API
     """
 
-    GET_CONTACTS = '/api.xro/2.0/contacts'
-    POST_CONTACTS = '/api.xro/2.0/contacts'
-    SEARCH_CONTACT = '/api.xro/2.0/Contacts?where=Name="{0}"'
+    GET_CONTACTS = '/api.xro/2.0/Contacts'
+    POST_CONTACTS = '/api.xro/2.0/Contacts'
 
     def get_all(self, modified_after: str = None):
         """
@@ -25,6 +24,16 @@ class Contacts(ApiBase):
         """
 
         return self._get_request(Contacts.GET_CONTACTS, additional_headers={'If-Modified-Since': modified_after})
+
+    def list_all_generator(self):
+        """
+        Get all contacts
+
+        Returns:
+            List of all contacts with pagination
+        """
+
+        return list(self._get_all_generator(Contacts.GET_CONTACTS, 'Contacts'))
 
     def post(self, data):
         """
@@ -46,6 +55,6 @@ class Contacts(ApiBase):
         :return: Contact
         """
 
-        response = self._get_request(Contacts.SEARCH_CONTACT.format(contact_name))
+        response = self._search_request(Contacts.GET_CONTACTS, 'Name', contact_name)
 
         return response['Contacts'][0] if response['Contacts'] else None
