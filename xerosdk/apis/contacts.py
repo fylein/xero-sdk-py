@@ -25,15 +25,18 @@ class Contacts(ApiBase):
 
         return self._get_request(Contacts.GET_CONTACTS, additional_headers={'If-Modified-Since': modified_after})
 
-    def list_all_generator(self):
+    def list_all_generator(self, modified_after: str = None):
         """
         Get all contacts
+
+        :param modified_after: Optional modified_after parameter as a string in 2009-11-12T00:00:00 format
 
         Returns:
             List of all contacts with pagination
         """
 
-        return list(self._get_all_generator(Contacts.GET_CONTACTS, 'Contacts'))
+        return list(self._get_all_generator(
+            Contacts.GET_CONTACTS, 'Contacts', additional_headers={'If-Modified-Since': modified_after}))
 
     def post(self, data):
         """

@@ -58,8 +58,7 @@ class ApiBase:
         api_headers = {
             'authorization': 'Bearer ' + self.__access_token,
             'xero-tenant-id': self.__tenant_id,
-            'accept': 'application/json',
-            **additional_headers
+            'accept': 'application/json'
         }
 
         api_url = '{0}?where={1}="{2}"'.format(api_url, parameter, value)
@@ -93,12 +92,15 @@ class ApiBase:
 
         Parameters:
             api_url (str): URL of Xero API
+            page (int): Page number
+            additional_headers (dict): HTTP Additional headers for the wanted API.
         """
 
         api_headers = {
             'authorization': 'Bearer ' + self.__access_token,
             'xero-tenant-id': self.__tenant_id,
-            'accept': 'application/json'
+            'accept': 'application/json',
+            **additional_headers
         }
 
         api_url = '{0}?page={1}'.format(api_url, page)
@@ -125,7 +127,7 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
-    def _get_all_generator(self, api_url: str, attribute_type: str):
+    def _get_all_generator(self, api_url: str, attribute_type: str, additional_headers: dict = {}):
         """
         HTTP get request to a given Xero API URL
 
@@ -137,7 +139,7 @@ class ApiBase:
         has_more = True
 
         while has_more:
-            response = self._get_request(api_url, page)
+            response = self._get_request(api_url, page, additional_headers)
             page += 1
             yield response
 
