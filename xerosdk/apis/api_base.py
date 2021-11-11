@@ -328,7 +328,7 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
-    def _remove_teneant_connection(self):
+    def remove_teneant_connection(self):
         api_headers = {
             'authorization': 'Bearer ' + self.__access_token,
         }
