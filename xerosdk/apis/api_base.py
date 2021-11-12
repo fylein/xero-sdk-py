@@ -244,6 +244,51 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
+    def _delete_request(self, api_url: str):
+        """
+        HTTP delete method to send data to Xero API URL
+
+        Parameters:
+            api_url (str): URL of Xero API
+        """
+        api_headers = {
+            'authorization': 'Bearer ' + self.__access_token,
+        }
+        response = requests.delete(
+            self.__server_url + api_url,
+            headers=api_headers
+        )
+
+        if response.status_code == 200:
+            return json.loads(response.text)
+
+        if response.status_code == 204:
+            return None
+
+        if response.status_code == 400:
+            error_msg = json.loads(response.text)
+            raise WrongParamsError(error_msg, response.status_code)
+
+        if response.status_code == 401:
+            error_msg = json.loads(response.text)
+            raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
+
+        if response.status_code == 403:
+            error_msg = json.loads(response.text)
+            raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
+
+        if response.status_code == 404:
+            error_msg = json.loads(response.text)
+            raise NotFoundItemError('Not found item with ID', error_msg)
+
+        if response.status_code == 500:
+            error_msg = json.loads(response.text)
+            raise InternalServerError('Internal server error', error_msg)
+
+        raise XeroSDKError(
+            'Status code {0}'.format(response.status_code), response.text
+        )
+
     def _get_tenant_ids(self):
         api_headers = {
             'authorization': 'Bearer ' + self.__access_token,
@@ -314,39 +359,6 @@ class ApiBase:
 
         if response.status_code == 403:
             error_msg = response.text
-            raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
-
-        if response.status_code == 404:
-            error_msg = json.loads(response.text)
-            raise NotFoundItemError('Not found item with ID', error_msg)
-
-        if response.status_code == 500:
-            error_msg = json.loads(response.text)
-            raise InternalServerError('Internal server error', error_msg)
-
-        raise XeroSDKError(
-            'Status code {0}'.format(response.status_code), response.text
-        )
-
-    def remove_teneant_connection(self):
-        api_headers = {
-            'authorization': 'Bearer ' + self.__access_token,
-        }
-        response = requests.delete('https://api.xero.com/connections', headers=api_headers)
-
-        if response.status_code == 200:
-            return json.loads(response.text)
-
-        if response.status_code == 400:
-            error_msg = json.loads(response.text)
-            raise WrongParamsError(error_msg, response.status_code)
-
-        if response.status_code == 401:
-            error_msg = json.loads(response.text)
-            raise InvalidTokenError('Invalid token, try to refresh it', error_msg)
-
-        if response.status_code == 403:
-            error_msg = json.loads(response.text)
             raise NoPrivilegeError('Forbidden, the user has insufficient privilege', error_msg)
 
         if response.status_code == 404:
