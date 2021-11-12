@@ -7,7 +7,7 @@ from .api_base import ApiBase
 
 class Connections(ApiBase):
     """
-    Class for Tenants
+    Class for Connections
     """
     GET_CONNECTIONS = '/connections'
     REVOKE_CONNECTION = '/connections/{}'
