@@ -12,6 +12,7 @@ from .tenants import Tenants
 from .bank_transactions import BankTransactions
 from .attachments import Attachments
 from .organisations import Organisations
+from .connections import Connections
 
 __all__ = [
     'Invoices',
@@ -23,5 +24,6 @@ __all__ = [
     'Tenants',
     'BankTransactions',
     'Attachments',
-    'Organisations'
+    'Organisations',
+    'Connections'
 ]
