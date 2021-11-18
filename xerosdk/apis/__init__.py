@@ -13,6 +13,7 @@ from .bank_transactions import BankTransactions
 from .attachments import Attachments
 from .organisations import Organisations
 from .connections import Connections
+from .currencies import Currencies
 
 __all__ = [
     'Invoices',
@@ -25,5 +26,6 @@ __all__ = [
     'BankTransactions',
     'Attachments',
     'Organisations',
-    'Connections'
+    'Connections',
+    'Currencies'
 ]
