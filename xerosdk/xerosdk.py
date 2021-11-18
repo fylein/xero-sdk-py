@@ -44,6 +44,7 @@ class XeroSDK:
         self.attachments = Attachments()
         self.organisations = Organisations()
         self.connections = Connections()
+        self.currencies = Currencies()
 
         # Set the server url
         self.set_server_url()
@@ -69,6 +70,7 @@ class XeroSDK:
         self.attachments.set_server_url(base_url)
         self.organisations.set_server_url(base_url)
         self.connections.set_server_url(base_url)
+        self.currencies.set_server_url(base_url)
 
     def set_tenant_id(self, tenant_id):
         """
@@ -89,6 +91,7 @@ class XeroSDK:
         self.attachments.set_tenant_id(tenant_id)
         self.organisations.set_tenant_id(tenant_id)
         self.connections.set_tenant_id(tenant_id)
+        self.currencies.set_tenant_id(tenant_id)
 
     def refresh_access_token(self):
         """
@@ -108,6 +111,7 @@ class XeroSDK:
         self.attachments.change_access_token(access_token)
         self.organisations.change_access_token(access_token)
         self.connections.change_access_token(access_token)
+        self.currencies.change_access_token(access_token)
 
     def __get_access_token(self):
         """
