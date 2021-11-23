@@ -77,6 +77,10 @@ class ApiBase:
                 'Invalid xero tenant ID or xero-tenant-id header missing'
             )
 
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
+
         if response.status_code == 500:
             raise InternalServerError(
                 'Internal server error'
@@ -117,6 +121,10 @@ class ApiBase:
             raise UnsuccessfulAuthentication(
                 'Invalid xero tenant ID or xero-tenant-id header missing'
             )
+
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
 
         if response.status_code == 500:
             raise InternalServerError(
@@ -187,6 +195,10 @@ class ApiBase:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
 
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
+
         if response.status_code == 500:
             error_msg = json.loads(response.text)
             raise InternalServerError('Internal server error', error_msg)
@@ -236,6 +248,10 @@ class ApiBase:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
 
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
+
         if response.status_code == 500:
             error_msg = json.loads(response.text)
             raise InternalServerError('Internal server error', error_msg)
@@ -281,6 +297,10 @@ class ApiBase:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
 
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
+
         if response.status_code == 500:
             error_msg = json.loads(response.text)
             raise InternalServerError('Internal server error', error_msg)
@@ -313,6 +333,10 @@ class ApiBase:
         if response.status_code == 404:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
+
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
@@ -364,6 +388,10 @@ class ApiBase:
         if response.status_code == 404:
             error_msg = json.loads(response.text)
             raise NotFoundItemError('Not found item with ID', error_msg)
+
+        if response.status_code == 429:
+            error_msg = json.loads(response.text)
+            raise RateLimitError('Too many requests', error_msg)
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
