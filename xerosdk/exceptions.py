@@ -49,5 +49,9 @@ class NotFoundItemError(XeroSDKError):
     """Not found the item from URL, 404 error."""
 
 
+class RateLimitError(XeroSDKError):
+    """Rate limit exceeded, 429 error."""
+
+
 class InternalServerError(XeroSDKError):
     """Internal server error, 500 error"""
