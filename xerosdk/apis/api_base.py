@@ -78,8 +78,7 @@ class ApiBase:
             )
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             raise InternalServerError(
@@ -123,8 +122,7 @@ class ApiBase:
             )
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             raise InternalServerError(
@@ -196,8 +194,7 @@ class ApiBase:
             raise NotFoundItemError('Not found item with ID', error_msg)
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
@@ -249,8 +246,7 @@ class ApiBase:
             raise NotFoundItemError('Not found item with ID', error_msg)
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
@@ -298,8 +294,7 @@ class ApiBase:
             raise NotFoundItemError('Not found item with ID', error_msg)
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
@@ -335,8 +330,7 @@ class ApiBase:
             raise NotFoundItemError('Not found item with ID', error_msg)
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
@@ -390,8 +384,7 @@ class ApiBase:
             raise NotFoundItemError('Not found item with ID', error_msg)
 
         if response.status_code == 429:
-            error_msg = json.loads(response.text)
-            raise RateLimitError('Too many requests', error_msg)
+            raise RateLimitError('Too many requests')
 
         if response.status_code == 500:
             error_msg = json.loads(response.text)
