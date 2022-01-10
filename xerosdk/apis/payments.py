@@ -32,7 +32,7 @@ class Payments(ApiBase):
             List of all payments with pagination
         """
 
-        return list(self._get_all_generator(Payments.GET_PAYMENTS, 'Payments'))
+        return self._get_all_generator(Payments.GET_PAYMENTS, 'Payments')
 
     def get_by_id(self, payment_id):
         """

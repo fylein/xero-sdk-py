@@ -116,3 +116,4 @@ media/**
 # Test files
 dry_run.py
 test.py
+private/

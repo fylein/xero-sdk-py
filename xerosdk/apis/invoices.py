@@ -32,7 +32,7 @@ class Invoices(ApiBase):
             List of all invoices with pagination
         """
 
-        return list(self._get_all_generator(Invoices.GET_INVOICES, 'Invoices'))
+        return self._get_all_generator(Invoices.GET_INVOICES, 'Invoices')
 
     def get_by_id(self, invoice_id):
         """
