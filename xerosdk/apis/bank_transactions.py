@@ -32,7 +32,7 @@ class BankTransactions(ApiBase):
             List of all transactions with pagination and generator
         """
 
-        return list(self._get_all_generator(BankTransactions.GET_BANK_TRANSACTIONS, 'BankTransactions'))
+        return self._get_all_generator(BankTransactions.GET_BANK_TRANSACTIONS, 'BankTransactions')
 
     def get_by_id(self, bank_transaction_id):
         """

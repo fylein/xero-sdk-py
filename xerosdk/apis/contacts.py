@@ -35,8 +35,8 @@ class Contacts(ApiBase):
             List of all contacts with pagination
         """
 
-        return list(self._get_all_generator(
-            Contacts.GET_CONTACTS, 'Contacts', additional_headers={'If-Modified-Since': modified_after}))
+        return self._get_all_generator(
+            Contacts.GET_CONTACTS, 'Contacts', additional_headers={'If-Modified-Since': modified_after})
 
     def post(self, data):
         """
