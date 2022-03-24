@@ -14,6 +14,7 @@ from .attachments import Attachments
 from .organisations import Organisations
 from .connections import Connections
 from .currencies import Currencies
+from .tax_rates import TaxRates
 
 __all__ = [
     'Invoices',
@@ -27,5 +28,6 @@ __all__ = [
     'Attachments',
     'Organisations',
     'Connections',
-    'Currencies'
+    'Currencies',
+    'TaxRates'
 ]

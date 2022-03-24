@@ -20,6 +20,8 @@ def get_mock_xero_from_file(filename):
     mock_xero.Accounts.get_all.return_value = mock_xero_dict['accounts']
     mock_xero.Contacts.get_all.return_value = mock_xero_dict['contacts']
     mock_xero.TrackingCategories.get_all.return_value = mock_xero_dict['tracking_categories']
+    mock_xero.TaxRates.get_all.return_value = mock_xero_dict['TaxRates']
+
     return mock_xero
 
 

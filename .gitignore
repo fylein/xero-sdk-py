@@ -117,3 +117,5 @@ media/**
 dry_run.py
 test.py
 private/
+test_credentials.json
+test_creds.py
