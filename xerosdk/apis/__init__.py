@@ -15,6 +15,7 @@ from .organisations import Organisations
 from .connections import Connections
 from .currencies import Currencies
 from .tax_rates import TaxRates
+from .linked_transactions import LinkedTransactions
 
 __all__ = [
     'Invoices',
@@ -29,5 +30,6 @@ __all__ = [
     'Organisations',
     'Connections',
     'Currencies',
-    'TaxRates'
+    'TaxRates',
+    'LinkedTransactions'
 ]

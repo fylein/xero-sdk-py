@@ -46,6 +46,7 @@ class XeroSDK:
         self.connections = Connections()
         self.currencies = Currencies()
         self.tax_rates = TaxRates()
+        self.linked_transactions = LinkedTransactions()
 
         # Set the server url
         self.set_server_url()
@@ -73,6 +74,7 @@ class XeroSDK:
         self.connections.set_server_url(base_url)
         self.currencies.set_server_url(base_url)
         self.tax_rates.set_server_url(base_url)
+        self.linked_transactions.set_server_url(base_url)
 
 
     def set_tenant_id(self, tenant_id):
@@ -96,6 +98,7 @@ class XeroSDK:
         self.connections.set_tenant_id(tenant_id)
         self.currencies.set_tenant_id(tenant_id)
         self.tax_rates.set_tenant_id(tenant_id)
+        self.linked_transactions.set_tenant_id(tenant_id)
 
 
     def refresh_access_token(self):
@@ -118,6 +121,7 @@ class XeroSDK:
         self.connections.change_access_token(access_token)
         self.currencies.change_access_token(access_token)
         self.tax_rates.change_access_token(access_token)
+        self.linked_transactions.change_access_token(access_token)
 
     def __get_access_token(self):
         """
