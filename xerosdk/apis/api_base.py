@@ -89,7 +89,7 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
-    def _get_request(self, api_url, page = None, additional_headers: dict = {}):
+    def _get_request(self, api_url, page = None, additional_headers: dict = {}, query_params: dict = {}):
         """
         HTTP get request to a given Xero API URL
 
@@ -106,7 +106,12 @@ class ApiBase:
             **additional_headers
         }
 
-        api_url = '{0}?page={1}'.format(api_url, page)
+        if page:
+            query_params['page'] = page
+
+        if query_params:
+            api_url = '{0}?{1}'.format(api_url, '&'.join([f'{k}={v}' for k, v in query_params.items()]))
+
         response = requests.get(
             self.__server_url+api_url,
             headers=api_headers
@@ -133,7 +138,7 @@ class ApiBase:
             'Status code {0}'.format(response.status_code), response.text
         )
 
-    def _get_all_generator(self, api_url: str, attribute_type: str, additional_headers: dict = {}):
+    def _get_all_generator(self, api_url: str, attribute_type: str, additional_headers: dict = {}, query_params: dict = {}):
         """
         HTTP get request to a given Xero API URL
 
@@ -145,7 +150,7 @@ class ApiBase:
         has_more = True
 
         while has_more:
-            response = self._get_request(api_url, page, additional_headers)
+            response = self._get_request(api_url, page, additional_headers, query_params)
             page += 1
             yield response
 
