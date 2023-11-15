@@ -13,7 +13,7 @@ class Contacts(ApiBase):
     GET_CONTACTS = '/api.xro/2.0/Contacts'
     POST_CONTACTS = '/api.xro/2.0/Contacts'
 
-    def get_all(self, modified_after: str = None, is_customer: bool = False, is_supplier: bool = False):
+    def get_all(self, modified_after: str = None):
         """
         Get all contacts
 
@@ -24,9 +24,7 @@ class Contacts(ApiBase):
         """
 
         return self._get_request(Contacts.GET_CONTACTS, additional_headers={
-                'If-Modified-Since': modified_after,
-                'IsCustomer': is_customer,
-                'IsSupplier': is_supplier
+                'If-Modified-Since': modified_after
             }
         )
 
