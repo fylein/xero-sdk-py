@@ -12,7 +12,7 @@ class Accounts(ApiBase):
 
     GET_ACCOUNTS = '/api.xro/2.0/Accounts'
 
-    def get_all(self, modified_after: str = None):
+    def get_all(self, modified_after: str = None, **kwargs):
         """
         Get all accounts
 
@@ -22,4 +22,8 @@ class Accounts(ApiBase):
             List of all accounts
         """
 
-        return self._get_request(Accounts.GET_ACCOUNTS, additional_headers={'If-Modified-Since': modified_after})
+        return self._get_request(
+            Accounts.GET_ACCOUNTS,
+            additional_headers={'If-Modified-Since': modified_after},
+            query_params=kwargs
+        )
