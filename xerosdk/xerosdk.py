@@ -166,7 +166,7 @@ class XeroSDK:
                     'Invalid or non-existing grant type in request body'
                 )
 
-            raise XeroSDKError(
+            raise InvalidTokenError(
                 'Status code {0}'.format(response.status_code), response.text
             )
 
