@@ -2,11 +2,13 @@
 API base class
 """
 
+import logging
 import json
 import requests
 
 from ..exceptions import *
 
+logger = logging.getLogger(__name__)
 
 class ApiBase:
     """
@@ -69,9 +71,11 @@ class ApiBase:
         )
 
         if response.status_code == 200:
+            logger.debug('Response for get request for url: %s, %s', api_url, response.text)
             result = json.loads(response.text)
             return result
 
+        logger.info('Response for get request for url: %s, %s', api_url, response.text)
         if response.status_code == 403:
             raise UnsuccessfulAuthentication(
                 'Invalid xero tenant ID or xero-tenant-id header missing'
@@ -118,9 +122,11 @@ class ApiBase:
         )
 
         if response.status_code == 200:
+            logger.debug('Response for get request for url: %s, %s', api_url, response.text)
             result = json.loads(response.text)
             return result
 
+        logger.info('Response for get request for url: %s, %s', api_url, response.text)
         if response.status_code == 403:
             raise UnsuccessfulAuthentication(
                 'Invalid xero tenant ID or xero-tenant-id header missing'
@@ -171,6 +177,7 @@ class ApiBase:
             'xero-tenant-id': self.__tenant_id,
             'accept': 'application/json'
         }
+        
 
         response = requests.put(
             self.__server_url + api_url,
@@ -178,10 +185,14 @@ class ApiBase:
             json=data
         )
 
+        logger.debug('Payload for put request: %s', data)
+
         if response.status_code == 200:
+            logger.debug('Response for put request: %s', response.text)
             result = json.loads(response.text)
             return result
 
+        logger.info('Response for put request: %s', response.text)
         if response.status_code == 400:
             error_msg = json.loads(response.text)
             raise WrongParamsError(error_msg, response.status_code)
@@ -230,10 +241,14 @@ class ApiBase:
             json=data
         )
 
+        logger.debug('Payload for post request: %s', data)
+
         if response.status_code == 200:
+            logger.debug('Response for post request: %s', response.text)
             result = json.loads(response.text)
             return result
 
+        logger.info('Response for post request: %s', response.text)
         if response.status_code == 400:
             error_msg = json.loads(response.text)
             raise WrongParamsError(error_msg, response.status_code)
@@ -277,7 +292,10 @@ class ApiBase:
         )
 
         if response.status_code == 200:
+            logger.debug('Response for delete request for url: %s, %s', api_url, response.text)
             return json.loads(response.text)
+
+        logger.info('Response for delete request for url: %s, %s', api_url, response.text)
 
         if response.status_code == 204:
             return None
@@ -368,10 +386,14 @@ class ApiBase:
             data=data
         )
 
+        logger.debug('Payload for post request: %s', data)
+
         if response.status_code == 200:
+            logger.debug('Response for post request: %s', response.text)
             result = json.loads(response.text)
             return result
-
+        
+        logger.info('Response for post request: %s', response.text)
         if response.status_code == 400:
             error_msg = response.text
             raise WrongParamsError(error_msg, response.status_code)
