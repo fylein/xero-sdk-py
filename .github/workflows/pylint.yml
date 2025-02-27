@@ -17,9 +17,7 @@ jobs:
           python-version: '3.13'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt && pip install pylint
 
-      - name: Run pylint
-        uses: cclauss/GitHub-Action-for-pylint@0.7.0
-        with:
-          args: --rcfile=.pylintrc xerosdk
+      - name: pylint check
+        run: pylint --rcfile=.pylintrc xerosdk/**/**.py
