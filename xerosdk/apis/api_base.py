@@ -176,7 +176,7 @@ class ApiBase:
             'Authorization': 'Bearer ' + self.__access_token,
             'xero-tenant-id': self.__tenant_id,
             'accept': 'application/json'
-        } 
+        }
 
         response = requests.put(
             self.__server_url + api_url,
