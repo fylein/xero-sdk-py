@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
     name='xerosdk',
-    version='0.14.2',
+    version='0.14.3',
     author='Ashwin T',
     author_email='ashwin.t@fyle.in',
     description='Python SDK to access Xero APIs',
@@ -16,7 +16,7 @@ setuptools.setup(
     keywords=['xero', 'api', 'python', 'sdk'],
     url='https://github.com/fylein/xero-sdk-py',
     packages=setuptools.find_packages(),
-    install_requires=['requests>=2.25.0'],
+    install_requires=['requests==2.32.3'],
     classifiers=[
         'Topic :: Internet :: WWW/HTTP',
         'Intended Audience :: Developers',

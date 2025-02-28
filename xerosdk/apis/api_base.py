@@ -177,7 +177,6 @@ class ApiBase:
             'xero-tenant-id': self.__tenant_id,
             'accept': 'application/json'
         }
-        
 
         response = requests.put(
             self.__server_url + api_url,
@@ -392,7 +391,7 @@ class ApiBase:
             logger.debug('Response for post request: %s', response.text)
             result = json.loads(response.text)
             return result
-        
+
         logger.info('Response for post request: %s', response.text)
         if response.status_code == 400:
             error_msg = response.text

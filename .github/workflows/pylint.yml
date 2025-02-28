@@ -6,12 +6,18 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: GitHub Action for pylint
-      uses: cclauss/GitHub-Action-for-pylint@0.7.0
-      with:
-        args: pip install -r requirements.txt && pylint --rcfile=.pylintrc xerosdk
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt && pip install pylint
+
+      - name: pylint check
+        run: pylint --rcfile=.pylintrc xerosdk/**/**.py
