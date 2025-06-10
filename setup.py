@@ -16,7 +16,7 @@ setuptools.setup(
     keywords=['xero', 'api', 'python', 'sdk'],
     url='https://github.com/fylein/xero-sdk-py',
     packages=setuptools.find_packages(),
-    install_requires=['requests==2.32.3'],
+    install_requires=['requests==2.32.4'],
     classifiers=[
         'Topic :: Internet :: WWW/HTTP',
         'Intended Audience :: Developers',
